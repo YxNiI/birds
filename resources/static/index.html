@@ -4,7 +4,7 @@
     <meta name="description" content="Zeigt ein paar Vögel aus einer Datenbank an.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8">
     <!-- <link rel="icon" type="image/x-icon" href="./favicon.ico"> -->
     <title>Vögel</title>
     [[*styles]]
@@ -31,24 +31,24 @@
                     [[*hint]]
                 </div>
             </div>
-            <form method="get" action="[[*action]]">
+            <form method="get" action="[[*action]]" id="birdSubmit">
                 <table class="textInputForm">
                     <tr>
                         <td><label for="name">Name:</label></td>
-                        <td><input type="text" id="name"></td>
+                        <td><input type="text" id="name" required minlength="1" maxlength="12" form="birdSubmit"></td>
                     </tr>
                     <tr>
                         <td><label for="kind">Art:</label></td>
-                        <td><input type="text" id="kind"></td>
+                        <td><input type="text" id="kind" required minlength="1" maxlength="12" form="birdSubmit"></td>
                     </tr>
                     <tr>
-                        <td><label for="color">Name:</label></td>
-                        <td><input type="text" id="color"></td>
+                        <td><label for="color">Farbe:</label></td>
+                        <td><input type="text" id="color" required minlength="1" maxlength="12" form="birdSubmit"></td>
                     </tr>
                 </table>
                 <div class="buttonContainer">
-                    <button type="button">Speichere Vogel</button>
-                    <button type="button">Lösche Vogel</button>
+                    <input type="submit" name="speichern" formmethod="get" form="birdSubmit">Speichere Vogel</input>
+                    <input type="submit" name="löschen" formmethod="get" form="birdSubmit">Lösche Vogel</input>
                 </div>
             </form>
         </div>
