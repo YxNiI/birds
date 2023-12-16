@@ -13,10 +13,12 @@ final class UI
 
         $this->view = file_get_contents($path . 'index.html');
         $this->view = str_replace('[[*styles]]', '<style>' . file_get_contents($path . 'styles.css') . '</style>', $this->view);
+        $this->view = str_replace('[[*action]]', BASEPATH . DIRECTORY_SEPARATOR . 'index.php', $this->view);
     }
 
     final function displayView(mysqli_result $businessResult): void
     {
+        $viewWithData = $this->view;
         $result = '';
 
 
@@ -24,10 +26,9 @@ final class UI
         {
             $result .= '<tr><td>' .  $row[0] . '</td><td>' . $row[1] . '</td><td>' . $row[2] . '</td></tr>';
         }
-        $this->view = str_replace('[[*birds]]', $result, $this->view);
+        $viewWithData = str_replace('[[*birds]]', $result, $viewWithData);
 
-        print_r($this->view);
+        print_r($viewWithData);
     }
 }
-
 ?>

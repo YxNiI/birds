@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8"/>
-    <title>Birds</title>
+    <!-- <link rel="icon" type="image/x-icon" href="./favicon.ico"> -->
+    <title>Vögel</title>
     [[*styles]]
 </head>
 <body>
-<div class="tableBackground">
-    <div class="interfaceContainer">
+<div class="rootContainer">
+    <div class="dataContainer">
         <div>
             <h1><u>Vogel-Daten</u></h1>
             <table class="birds">
@@ -22,10 +23,16 @@
                 [[*birds]]
             </table>
         </div>
-        <div>
+        <div class="interfaceContainer">
             <h1><u>Schnittstelle</u></h1>
-            <form action="/action_page.php">
-                <table class="birdInput">
+            <div class="hintBox">
+                <h3><u>Hinweis:</u></h3>
+                <div class="textBox">
+                    [[*hint]]
+                </div>
+            </div>
+            <form method="get" action="[[*action]]">
+                <table class="textInputForm">
                     <tr>
                         <td><label for="name">Name:</label></td>
                         <td><input type="text" id="name"></td>
@@ -39,6 +46,10 @@
                         <td><input type="text" id="color"></td>
                     </tr>
                 </table>
+                <div class="buttonContainer">
+                    <button type="button">Speichere Vogel</button>
+                    <button type="button">Lösche Vogel</button>
+                </div>
             </form>
         </div>
     </div>

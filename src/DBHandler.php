@@ -2,6 +2,7 @@
 
 /**
  * Handles database interactions.
+ * @
  */
 final class DBHandler
 {

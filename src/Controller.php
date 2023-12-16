@@ -13,6 +13,7 @@ final class Controller
     {
         $ui = new UI();
         $ui->displayView(DBHandler::getAllData());
+        echo INPUT_GET;
     }
 }
 ?>
