@@ -9,11 +9,12 @@ final class UI
 
     function __construct()
     {
-        $path = BASEPATH . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'static' . DIRECTORY_SEPARATOR;
+        $this->view = file_get_contents(BASEPATH_LOCAL . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'static' . DIRECTORY_SEPARATOR . 'index.html');
+        $path = BASEPATH_SERVER . 'resources/static/';
 
-        $this->view = file_get_contents($path . 'index.html');
-        $this->view = str_replace('[[*styles]]', '<style>' . file_get_contents($path . 'styles.css') . '</style>', $this->view);
-        $this->view = str_replace('[[*action]]', BASEPATH . DIRECTORY_SEPARATOR . 'index.php', $this->view);
+        $this->view = str_replace('[[*styles]]', $path . 'styles.css', $this->view);
+        $this->view = str_replace('[[*favicon]]', $path . 'favicon.ico', $this->view);
+        $this->view = str_replace('[[*action]]', BASEPATH_SERVER . '/index.php', $this->view);
     }
 
     final function displayView(mysqli_result $businessResult): void

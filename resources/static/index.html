@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8">
-    <!-- <link rel="icon" type="image/x-icon" href="./favicon.ico"> -->
+    <link rel="stylesheet" type="text/css" href="[[*styles]]">
+    <link rel="icon" type="image/x-icon" href="[[*favicon]]">
     <title>Vögel</title>
-    [[*styles]]
 </head>
 <body>
 <div class="rootContainer">
@@ -35,20 +35,20 @@
                 <table class="textInputForm">
                     <tr>
                         <td><label for="name">Name:</label></td>
-                        <td><input type="text" id="name" required minlength="1" maxlength="12" form="birdSubmit"></td>
+                        <td><input type="text" id="name" name="name" required minlength="1" maxlength="12"></td>
                     </tr>
                     <tr>
                         <td><label for="kind">Art:</label></td>
-                        <td><input type="text" id="kind" required minlength="1" maxlength="12" form="birdSubmit"></td>
+                        <td><input type="text" id="kind" name="kind" required minlength="1" maxlength="12"></td>
                     </tr>
                     <tr>
                         <td><label for="color">Farbe:</label></td>
-                        <td><input type="text" id="color" required minlength="1" maxlength="12" form="birdSubmit"></td>
+                        <td><input type="text" id="color" name="color" required minlength="1" maxlength="12"></td>
                     </tr>
                 </table>
                 <div class="buttonContainer">
-                    <input type="submit" name="speichern" formmethod="get" form="birdSubmit">Speichere Vogel</input>
-                    <input type="submit" name="löschen" formmethod="get" form="birdSubmit">Lösche Vogel</input>
+                    <button type="submit" class="reset field">Speichere Vogel</button>
+                    <button type="submit" class="reset field">Lösche Vogel</button>
                 </div>
             </form>
         </div>

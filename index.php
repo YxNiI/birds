@@ -1,18 +1,18 @@
 <?php
-session_start();
-define('BASEPATH', realpath(dirname(__FILE__)));
-require_once(BASEPATH . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php');
+$relativePathToCurrFile = str_replace($_SERVER['DOCUMENT_ROOT'], '', $_SERVER['SCRIPT_FILENAME']);
+$relativePath = str_replace('index.php', '', $relativePathToCurrFile);
 
-$controller = null;
-if (!empty($_SESSION['controller']))
-{
-    $controller = unserialize($_SESSION['controller']);
-}
-else
-{
-   $controller = new Controller();
-}
+define('BASEPATH_LOCAL', realpath(dirname(__FILE__)));
+define('BASEPATH_SERVER', 'http://'. $_SERVER['HTTP_HOST']  . $relativePath);
 
-$controller->run();
-$_SESSION['controller'] = serialize($controller);
+require_once(BASEPATH_LOCAL . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php');
+
+/* if ($_SERVER['REQUEST_METHOD'] === 'GET')
+{
+    echo $_GET['name'] ?? '';
+    echo $_GET['kind'] ?? '';
+    echo $_GET['color'] ?? '';
+} */
+
+Controller::run();
 ?>

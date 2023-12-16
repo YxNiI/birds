@@ -5,22 +5,14 @@
  */
 final class Controller
 {
-    private $ui;
-
-    function __construct()
+    private function __construct()
     {
-        $this->ui = new UI();
     }
 
-    final function run(): void
+    static final function run(): void
     {
-        $this->ui->displayView(DBHandler::getAllData());
-        echo INPUT_GET . 'Hier';
-        for ($index = 0; $index < sizeof($_GET); ++$index)
-        {
-            print_r($_GET[$index]);
-            echo 1;
-        }
+        $ui = new UI();
+        $ui->displayView(DBHandler::getAllData());
     }
 }
 ?>
