@@ -1,0 +1,70 @@
+/*
+ *  For the table which displays the data about the birds-db.
+ */
+.tableBackground
+{
+    width: 650px;
+    background-color: lightpink;
+    border-radius: 15px;
+    margin: 0 auto;
+    padding: 15px 15px;
+}
+
+.birds
+{
+    background-color: cornsilk;
+    border-radius: 15px;
+}
+
+.birds th, .birds td
+{
+    padding: 10px;
+}
+
+.birds th
+{
+    border-radius: 15px;
+    background-color: black;
+    color: cornsilk;
+    text-align: left;
+}
+
+
+/*
+ *  For the input-forms, which add data to the birds-db.
+ */
+.birdInput
+{
+    padding: 10px;
+    background-color: cornsilk;
+    border-radius: 15px;
+}
+
+input
+{
+    margin-top: 5px;
+}
+
+
+/*
+ * General rules.
+ */
+table
+{
+    margin: 15px;
+}
+
+h1
+{
+    text-align: center;
+}
+
+
+/*
+ * Manages the alignment of the data-view and it's interface.
+ */
+.interfaceContainer
+{
+    display:flex;
+    flex-direction: row;
+}
