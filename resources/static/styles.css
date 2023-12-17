@@ -23,9 +23,9 @@
 
 .birds th
 {
-    border-radius: 15px;
     background-color: black;
     color: cornsilk;
+    border-radius: 15px;
     text-align: left;
 }
 
@@ -36,10 +36,10 @@
  */
 .textInputForm
 {
-    margin-top: 0;
-    padding: 10px;
     background-color: cornsilk;
     border-radius: 15px;
+    margin-top: 0;
+    padding: 10px;
 }
 
 input
@@ -59,17 +59,17 @@ table
 
 h1, h3
 {
-    text-align: center;
     margin: 0;
+    text-align: center;
 }
 
 button
 {
     width: 125px;
+    background-color: cornsilk;
+    border-radius: 15px;
     margin-left: 125px;
     padding: 6px 14px;
-    border-radius: 15px;
-    background-color: cornsilk;
 }
 
 

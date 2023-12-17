@@ -23,7 +23,6 @@ final class UI
         {
             $postRequests = $_POST;
             $_POST = [];
-            foreach ($postRequests as $v)
 
             return $postRequests;
         }
