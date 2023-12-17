@@ -34,8 +34,8 @@
             <form method="post" action="[[*action]]" id="birdSubmit">
                 <table class="textInputForm">
                     <tr>
-                        <td><label for="name">Name:</label></td>
-                        <td><input type="text" id="name" name="name" required minlength="1" maxlength="12"></td>
+                        <td><label for="birdName">Name:</label></td>
+                        <td><input type="text" id="birdName" name="birdName" required minlength="1" maxlength="12"></td>
                     </tr>
                     <tr>
                         <td><label for="kind">Art:</label></td>
@@ -47,8 +47,8 @@
                     </tr>
                 </table>
                 <div class="buttonContainer">
-                    <button type="submit" class="reset field">Speichere Vogel</button>
-                    <button type="submit" class="reset field">Lösche Vogel</button>
+                    <button type="submit" name="button" value="save">Speichere Vogel</button>
+                    <button type="submit" name="button" value="delete">Lösche Vogel</button>
                 </div>
             </form>
         </div>

@@ -23,6 +23,7 @@ final class UI
         {
             $postRequests = $_POST;
             $_POST = [];
+            foreach ($postRequests as $v)
 
             return $postRequests;
         }
@@ -39,7 +40,7 @@ final class UI
 
         for ($row = $businessResult->fetch_row(); $row !== null; $row = $businessResult->fetch_row())
         {
-            $result .= '<tr><td>' .  $row[0] . '</td><td>' . $row[1] . '</td><td>' . $row[2] . '</td></tr>';
+            $result .= '<tr><td>' . $row[0] . '</td><td>' . $row[1] . '</td><td>' . $row[2] . '</td></tr>';
         }
         $viewWithData = str_replace('[[*birds]]', $result, $viewWithData);
         $viewWithData = str_replace('[[*hint]]', '', $viewWithData);
@@ -54,7 +55,8 @@ final class UI
 
     final function getColumnNames(): array
     {
-        return ['name', 'kind', 'color'];
+        return ['birdName', 'kind', 'color'];
     }
 }
+
 ?>

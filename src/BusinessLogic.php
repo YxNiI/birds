@@ -21,7 +21,7 @@ final class BusinessLogic
         return $this->dbHandler->getAll($columns, $table);
     }
 
-    function addData(array $postKeysAndValues, string $table): void
+    function modifyData(array $postKeysAndValues, string $table): void
     {
         if (empty($postKeysAndValues))
         {
@@ -29,7 +29,17 @@ final class BusinessLogic
         }
         else
         {
-            $this->dbHandler->add($postKeysAndValues, $table);
+            $buttonAction = $postKeysAndValues['button'];
+            unset($postKeysAndValues['button']);
+
+            if ('save' === $buttonAction)
+            {
+                $this->dbHandler->add($postKeysAndValues, $table);
+            }
+            elseif ('delete' === $buttonAction)
+            {
+                $this->dbHandler->delete($postKeysAndValues, $table);
+            }
         }
     }
 }

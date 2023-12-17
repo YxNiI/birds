@@ -32,7 +32,7 @@ final class DBHandler
         $result = $connection->query($query);
         $connection->close();
 
-        return ($result === false) ? new mysqli_result() : $result;
+        return (false === $result) ? new mysqli_result() : $result;
     }
 
     final function add(array $postKeysAndValues, string $table): void
@@ -71,7 +71,28 @@ final class DBHandler
         $connection->close();
     }
 
-    function getConnection(): mysqli
+    final function delete(array $postKeysAndValues, string $table)
+    {
+        $query = 'DELETE FROM ' . $table . ' WHERE 1 ';
+
+        foreach ($postKeysAndValues as $key => $value)
+        {
+            if ($key !== array_key_last($postKeysAndValues))
+            {
+                $query .= 'AND ' . $key . ' = \'' . $value . '\' ';
+            }
+            else
+            {
+                $query .= 'AND ' . $key . ' = \'' . $value . '\'';
+            }
+        }
+
+        $connection = $this->getConnection();
+        $connection->query($query);
+        $connection->close();
+    }
+
+    final function getConnection(): mysqli
     {
         return mysqli_connect($this->hostName, $this->userName, $this->password, $this->database);
 
