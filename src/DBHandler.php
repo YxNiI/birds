@@ -28,22 +28,18 @@ final class DBHandler
         }
         $query .= 'FROM ' . $table . ' WHERE 1';
 
-        $connection = $this->getConnection();
-        $result = $connection->query($query);
-        $connection->close();
-
-        return (false === $result) ? new mysqli_result() : $result;
+        return $this->execute($query);
     }
 
-    final function add(array $postKeysAndValues, string $table): void
+    final function add(array $postRequests, string $table): void
     {
         // TODO: Return boolean if it worked. (Or rather let the view handle the checking first.)
         // TODO: Reset with: ,,unset()''-function.
 
         $query = 'INSERT INTO ' . $table . ' (';
-        foreach ($postKeysAndValues as $key => $value)
+        foreach ($postRequests as $key => $value)
         {
-            if ($key !== array_key_last($postKeysAndValues))
+            if ($key !== array_key_last($postRequests))
             {
                 $query .= $key . ', ';
             }
@@ -54,9 +50,9 @@ final class DBHandler
         }
 
         $query .= 'VALUES (';
-        foreach ($postKeysAndValues as $key => $value)
+        foreach ($postRequests as $key => $value)
         {
-            if ($key !== array_key_last($postKeysAndValues))
+            if ($key !== array_key_last($postRequests))
             {
                 $query .= '\'' . $value . '\', ';
             }
@@ -66,18 +62,16 @@ final class DBHandler
             }
         }
 
-        $connection = $this->getConnection();
-        $connection->query($query);
-        $connection->close();
+        $this->execute($query);
     }
 
-    final function delete(array $postKeysAndValues, string $table)
+    final function delete(array $postRequests, string $table)
     {
         $query = 'DELETE FROM ' . $table . ' WHERE 1 ';
 
-        foreach ($postKeysAndValues as $key => $value)
+        foreach ($postRequests as $key => $value)
         {
-            if ($key !== array_key_last($postKeysAndValues))
+            if ($key !== array_key_last($postRequests))
             {
                 $query .= 'AND ' . $key . ' = \'' . $value . '\' ';
             }
@@ -87,15 +81,16 @@ final class DBHandler
             }
         }
 
-        $connection = $this->getConnection();
-        $connection->query($query);
-        $connection->close();
+        $this->execute($query);
     }
 
-    final function getConnection(): mysqli
+    private final function execute(string $query): mysqli_result
     {
-        return mysqli_connect($this->hostName, $this->userName, $this->password, $this->database);
+        $connection = mysqli_connect($this->hostName, $this->userName, $this->password, $this->database);
+        $result = $connection->query($query);
+        $connection->close();
 
+        return $result;
     }
 
     final function setHostName(string $hostName): void

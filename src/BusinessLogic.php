@@ -21,24 +21,24 @@ final class BusinessLogic
         return $this->dbHandler->getAll($columns, $table);
     }
 
-    function modifyData(array $postKeysAndValues, string $table): void
+    function modifyData(array $postRequests, string $table): void
     {
-        if (empty($postKeysAndValues))
+        if (empty($postRequests))
         {
             return;
         }
         else
         {
-            $buttonAction = $postKeysAndValues['button'];
-            unset($postKeysAndValues['button']);
+            $buttonAction = $postRequests['button'];
+            unset($postRequests['button']);
 
             if ('save' === $buttonAction)
             {
-                $this->dbHandler->add($postKeysAndValues, $table);
+                $this->dbHandler->add($postRequests, $table);
             }
             elseif ('delete' === $buttonAction)
             {
-                $this->dbHandler->delete($postKeysAndValues, $table);
+                $this->dbHandler->delete($postRequests, $table);
             }
         }
     }
