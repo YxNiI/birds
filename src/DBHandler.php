@@ -29,32 +29,33 @@ final class DBHandler
         // TODO: Return boolean if it worked. (Or rather let the view handle the checking first.)
         // TODO: Reset with: ,,unset()''-function.
 
-        $size = sizeof($getRequestNames);
         $query = 'INSERT INTO ' . $tableName . ' (';
 
-        for ($index = 0; $index < $size; ++$index)
+        foreach ($getRequestNames as $key => $value)
         {
-            if ($index != ($size - 2))
+            if ($key !== array_key_last($getRequestNames))
             {
-                $query .= $getRequestNames[$index] . ', ';
+                $query .= $key . ', ';
             }
             else
             {
-                $query .= $getRequestNames[$index] . ') ';
+                $query .= $key . ') ';
             }
         }
 
         $query .= 'VALUES (';
-        for ($index = 0; $index < $size; ++$index)
+        foreach ($getRequestNames as $key => $value)
         {
-            if ($index != ($size - 2))
+            if ($key !== array_key_last($getRequestNames))
             {
-                $query .= '\'' . $_GET[$getRequestNames[$index]] . '\', ';
+                $query .= '\'' . $value . '\', ';
             }
             else
             {
-                $query .= '\'' . $_GET[$getRequestNames[$index]] . '\')';
+                $query .= '\'' . $value . '\')';
             }
+
+            unset($getRequestNames[$key]);
         }
 
         $connection = $this->getConnection();

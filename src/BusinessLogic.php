@@ -23,7 +23,14 @@ final class BusinessLogic
 
     function add(string $tableName, array $columnsAndValues): void
     {
-        $this->dbHandler->add($tableName, $columnsAndValues);
+        if (empty($columnsAndValues))
+        {
+            return;
+        }
+        else
+        {
+            $this->dbHandler->add($tableName, $columnsAndValues);
+        }
     }
 }
 

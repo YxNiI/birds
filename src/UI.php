@@ -34,7 +34,7 @@ final class UI
         $viewWithData = $this->view;
         $result = '';
 
-        for ($row = $businessResult->fetch_row(); $row != null; $row = $businessResult->fetch_row())
+        for ($row = $businessResult->fetch_row(); $row !== null; $row = $businessResult->fetch_row())
         {
             $result .= '<tr><td>' .  $row[0] . '</td><td>' . $row[1] . '</td><td>' . $row[2] . '</td></tr>';
         }
@@ -43,8 +43,6 @@ final class UI
 
         print_r($viewWithData);
     }
-
-    // TODO: Change getter-names below somehow, the view shouldn't know about the database.
 
     final function getTableName(): string
     {
