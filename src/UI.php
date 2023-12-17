@@ -17,6 +17,18 @@ final class UI
         $this->view = str_replace('[[*action]]', BASEPATH_SERVER . '/index.php', $this->view);
     }
 
+    final function getGetRequests(): array
+    {
+        if (!empty($_GET))
+        {
+            return$_GET;
+        }
+        else
+        {
+            return [];
+        }
+    }
+
     final function displayView(mysqli_result $businessResult): void
     {
         $viewWithData = $this->view;
@@ -30,6 +42,18 @@ final class UI
         $viewWithData = str_replace('[[*hint]]', '', $viewWithData);
 
         print_r($viewWithData);
+    }
+
+    // TODO: Change getter-names below somehow, the view shouldn't know about the database.
+
+    final function getTableName(): string
+    {
+        return 'birds';
+    }
+
+    final function getColumnNames(): array
+    {
+        return ['name', 'kind', 'color'];
     }
 }
 ?>

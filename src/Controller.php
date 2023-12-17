@@ -14,7 +14,8 @@ final class Controller
         $ui = new UI();
         $businessLogic = new BusinessLogic();
 
-        $ui->displayView($businessLogic->getAllData());
+        $businessLogic->add($ui->getTableName(), $ui->getGetRequests());
+        $ui->displayView($businessLogic->getAllData($ui->getTableName(), $ui->getColumnNames()));
     }
 }
 ?>

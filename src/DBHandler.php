@@ -2,7 +2,6 @@
 
 /**
  * Handles database interactions.
- * @
  */
 final class DBHandler
 {
@@ -11,7 +10,7 @@ final class DBHandler
     private $password;
     private $database;
 
-    final function getAll(string $tableName, string ...$columnNames): mysqli_result
+    final function getAll(string $tableName, array $columnNames): mysqli_result
     {
         // TODO: Add the query generation.
         // TODO: And handling of booleans.
@@ -25,9 +24,10 @@ final class DBHandler
         return $result;
     }
 
-    final function addFromServer(string $tableName, string ...$getRequestNames): void
+    final function add(string $tableName, array $getRequestNames): void
     {
         // TODO: Return boolean if it worked. (Or rather let the view handle the checking first.)
+        // TODO: Reset with: ,,unset()''-function.
 
         $size = sizeof($getRequestNames);
         $query = 'INSERT INTO ' . $tableName . ' (';

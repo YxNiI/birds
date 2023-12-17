@@ -16,13 +16,15 @@ final class BusinessLogic
         $this->dbHandler->setDatabase('birds');
     }
 
-    function getAllData(): mysqli_result
+    function getAllData(string $tableName, array $columnNames): mysqli_result
     {
-        return $this->dbHandler->getAll('', '');
+        return $this->dbHandler->getAll($tableName, $columnNames);
     }
 
-    function addDataFromServer(): void
+    function add(string $tableName, array $columnsAndValues): void
     {
-        $this->dbHandler->addFromServer('birds', '');
+        $this->dbHandler->add($tableName, $columnsAndValues);
     }
 }
+
+?>
