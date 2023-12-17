@@ -17,15 +17,18 @@ final class UI
         $this->view = str_replace('[[*action]]', BASEPATH_SERVER . '/index.php', $this->view);
     }
 
-    final function getGetRequests(): array
+    final function getPostRequests(): array
     {
-        if (!empty($_GET))
+        if (!empty($_POST))
         {
-            return$_GET;
+            $postRequests = $_POST;
+            $_POST = [];
+
+            return $postRequests;
         }
         else
         {
-            return [];
+            return $_POST;
         }
     }
 

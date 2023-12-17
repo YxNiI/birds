@@ -16,20 +16,20 @@ final class BusinessLogic
         $this->dbHandler->setDatabase('birds');
     }
 
-    function getAllData(string $tableName, array $columnNames): mysqli_result
+    function getAllData(array $columns, string $table): mysqli_result
     {
-        return $this->dbHandler->getAll($tableName, $columnNames);
+        return $this->dbHandler->getAll($columns, $table);
     }
 
-    function add(string $tableName, array $columnsAndValues): void
+    function addData(array $postKeysAndValues, string $table): void
     {
-        if (empty($columnsAndValues))
+        if (empty($postKeysAndValues))
         {
             return;
         }
         else
         {
-            $this->dbHandler->add($tableName, $columnsAndValues);
+            $this->dbHandler->add($postKeysAndValues, $table);
         }
     }
 }
