@@ -12,7 +12,9 @@ final class Controller
     static final function run(): void
     {
         $ui = new UI();
-        $ui->displayView(DBHandler::getAllData());
+        $businessLogic = new BusinessLogic();
+
+        $ui->displayView($businessLogic->getAllData());
     }
 }
 ?>
