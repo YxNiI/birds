@@ -33,9 +33,6 @@ final class DBHandler
 
     final function add(array $postRequests, string $table): void
     {
-        // TODO: Return boolean if it worked. (Or rather let the view handle the checking first.)
-        // TODO: Reset with: ,,unset()''-function.
-
         $query = 'INSERT INTO ' . $table . ' (';
         foreach ($postRequests as $key => $value)
         {
@@ -65,7 +62,7 @@ final class DBHandler
         $this->execute($query);
     }
 
-    final function delete(array $postRequests, string $table)
+    final function delete(array $postRequests, string $table): void
     {
         $query = 'DELETE FROM ' . $table . ' WHERE 1 ';
 
@@ -84,10 +81,11 @@ final class DBHandler
         $this->execute($query);
     }
 
-    private final function execute(string $query): mysqli_result
+    private function execute(string $query): mysqli_result
     {
         $connection = mysqli_connect($this->hostName, $this->userName, $this->password, $this->database);
         $result = $connection->query($query);
+        $result = ('boolean' === gettype($result)) ? new mysqli_result($connection) : $result;
         $connection->close();
 
         return $result;

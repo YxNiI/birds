@@ -43,7 +43,6 @@ final class UI
             $result .= '<tr><td>' . $row[0] . '</td><td>' . $row[1] . '</td><td>' . $row[2] . '</td></tr>';
         }
         $viewWithData = str_replace('[[*birds]]', $result, $viewWithData);
-        $viewWithData = str_replace('[[*hint]]', '', $viewWithData);
 
         print_r($viewWithData);
     }
